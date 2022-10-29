@@ -79,9 +79,14 @@ public class DatabaseOperation extends SQLiteOpenHelper {
         }
     }
 
-    public List<Product> getAllProducts() {
+    public List<Product> getAllProducts(int sortByPrice) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from products", null);
+        Cursor cursor = null;
+        if (sortByPrice == 1)
+            cursor = db.rawQuery("select * from products order by price asc", null);
+        else
+            cursor = db.rawQuery("select * from products order by price desc", null);
+
         List<Product> list = new ArrayList<>();
         while (cursor.moveToNext()) {
             Product product = new Product();
