@@ -68,9 +68,14 @@ public class LoginActivity extends AppCompatActivity {
             db.addProductCategory("Dining Tables");
             db.addProductCategory("Sofas");
 
-            db.addProduct(1, "Relaxing Chair");
-            db.addProduct(1, "Revolving Chair");
-            db.addProduct(1, "Normal Chair");
+            db.addProduct(1, "Relaxing Chair", 4000);
+            db.addProduct(1, "Revolving Chair", 2600);
+            db.addProduct(1, "Normal Chair", 2000);
+            db.addProduct(1, "Massaging Chair", 3000);
+
+            db.addProduct(2, "Normal Table", 1500);
+            db.addProduct(2, "Computer Table", 3000);
+            db.addProduct(2, "Office Table", 2200);
         }
     }
 }

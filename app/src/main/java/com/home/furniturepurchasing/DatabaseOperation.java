@@ -22,7 +22,7 @@ public class DatabaseOperation extends SQLiteOpenHelper {
 
         db.execSQL("create table productcategories(id integer primary key AUTOINCREMENT, name varchar(250))");
 
-        db.execSQL("create table products(id integer primary key AUTOINCREMENT , category_id integer, name varchar(250))");
+        db.execSQL("create table products(id integer primary key AUTOINCREMENT , category_id integer, name varchar(250), price integer)");
     }
 
     @Override
@@ -69,10 +69,10 @@ public class DatabaseOperation extends SQLiteOpenHelper {
         return list;
     }
 
-    public boolean addProduct(int categoryId, String name) {
+    public boolean addProduct(int categoryId, String name, int price) {
         try {
             SQLiteDatabase db = getWritableDatabase();
-            db.execSQL("insert into products (category_id, name) values ('" + categoryId + "' , '" + name + "')");
+            db.execSQL("insert into products (category_id, name, price) values ('" + categoryId + "' , '" + name + "' , " + price + ")");
             return true;
         } catch (Exception e) {
             return false;
@@ -88,6 +88,7 @@ public class DatabaseOperation extends SQLiteOpenHelper {
             product.id = cursor.getInt(0);
             product.categoryId = cursor.getInt(1);
             product.name = cursor.getString(2);
+            product.price = cursor.getInt(3);
             list.add(product);
         }
         return list;
