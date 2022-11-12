@@ -58,7 +58,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         Product product = this.products.get(position);
         holder.textViewProduct.setText("Product : " + product.name);
         holder.textViewCategory.setText("Category : " + product.getCategoryName());
-        holder.textViewPrice.setText("Price : " + product.price);
+        holder.textViewPrice.setText("Price : Rs. " + product.price);
+
+        if (product.getCategoryName().equals("Office Tables")) {
+            holder.textViewCategory.setTextColor(context.getResources().getColor(R.color.teal_700));
+        } else {
+            holder.textViewCategory.setTextColor(context.getResources().getColor(R.color.purple_500));
+        }
     }
 
     @Override

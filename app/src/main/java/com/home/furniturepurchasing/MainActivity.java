@@ -39,13 +39,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         spinner = findViewById(R.id.spinner);
-        items = new String[]{"Sort By Price Ascending", "Sort By Price Descending"};
+        items = new String[]{"Price Ascending", "Price Descending"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (items[i] == "Sort By Price Ascending") {
+                if (items[i] == "Price Ascending") {
                     products = db.getAllProducts(1);
                 } else {
                     products = db.getAllProducts(2);

@@ -128,8 +128,20 @@
             android:padding="5dp"
             android:text="Sign In"
             android:textSize="20sp"
-
             android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/button_reset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/appred"
+            android:padding="5dp"
+            android:text="Reset"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <!--        <Button-->
         <!--            android:layout_width="match_parent"-->
