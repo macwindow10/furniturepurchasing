@@ -79,13 +79,28 @@ public class DatabaseOperation extends SQLiteOpenHelper {
         }
     }
 
-    public List<Product> getAllProducts(int sortByPrice) {
+    public List<Product> getAllProducts(int sortBy, int catagoryId) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = null;
-        if (sortByPrice == 1)
-            cursor = db.rawQuery("select * from products order by price asc", null);
-        else
-            cursor = db.rawQuery("select * from products order by price desc", null);
+        if (catagoryId == -1) {
+            if (sortBy == 1)
+                cursor = db.rawQuery("select * from products order by price asc", null);
+            else if (sortBy == 2)
+                cursor = db.rawQuery("select * from products order by price desc", null);
+            else if (sortBy == 3)
+                cursor = db.rawQuery("select * from products order by name asc", null);
+            else if (sortBy == 4)
+                cursor = db.rawQuery("select * from products order by name desc", null);
+        } else {
+            if (sortBy == 1)
+                cursor = db.rawQuery("select * from products where category_id=" + catagoryId + " order by price asc", null);
+            else if (sortBy == 2)
+                cursor = db.rawQuery("select * from products where category_id=" + catagoryId + " order by price desc", null);
+            else if (sortBy == 3)
+                cursor = db.rawQuery("select * from products where category_id=" + catagoryId + " order by name asc", null);
+            else if (sortBy == 4)
+                cursor = db.rawQuery("select * from products where category_id=" + catagoryId + " order by name desc", null);
+        }
 
         List<Product> list = new ArrayList<>();
         while (cursor.moveToNext()) {
